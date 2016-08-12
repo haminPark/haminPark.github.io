@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html >
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Style-type" content="text/css" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>SAMKUN</title>
+	<!-- 모바일에서 중요 부분 -->
+	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'/> 
+	<!-- 아이폰 전화번호 연걸 -->
+	<meta name="format-detection" content="telephone=no">
+    
+    <link rel="stylesheet" href="css/style.css" />
+	<link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	
+	<script src="js/jquery-2.1.3.min.js"></script>
+	<script src="js/swipe.js"></script>
+
+    <script>
+		$(function(){
+		
+			$('mainswipe-btn0').addClass('on');
+			//슬라이드 컨트롤
+			var elem = document.getElementById('mainSwipe');
+			window.mainSwipe = Swipe(elem, {
+				auto: 3000,
+				callback: function(index, element) { swipeAct(index); mainVisualChange(index); }
+				//transitionEnd: function(index, element) { /*swipeAct(index);*/ }
+			});
+
+			function swipeAct(no){
+				$('#mainswipe-btn0').removeClass('on');
+				$('#mainswipe-btn1').removeClass('on');
+				$('#mainswipe-btn2').removeClass('on');
+				$('#mainswipe-btn3').removeClass('on');
+
+				$('#mainswipe-btn'+no).addClass('on');
+			}
+
+			$('#mainswipe-prev').click(function(){
+				window.mainSwipe.prev();
+			});
+
+			$('#mainswipe-next').click(function(){
+				window.mainSwipe.next();
+			});
+
+			function mainVisualChange(no){
+				$("#main-bg>li").removeClass('on');
+				 $("#main-bg"+no).addClass('on')
+			}
+
+		});
+	</script>
+    
+    
+  </head>
+
+  <body>
+	<!-- 헤더 시작 -->
+	<div id="header">
+		<div class="mo-logo mobile-only"><a>LOGO</a></div>
+		<div class="mobile-only mo-icon">
+			<div class="one"></div>
+			<div class="two"></div>
+			<div class="three"></div>
+		</div>
+		<!-- pc 헤더 -->
+		<div class="content-wrap pc-header pc-only">
+			<!-- 유틸메뉴 -->
+			<ul class="util-menu">
+				<li><a href="">Sitemap</a></li>
+				<li><a href="">Contact Us</a></li>
+				<li class="language">
+					<p>Korean<i class="fa fa-angle-down"></i></p>
+					<div>
+						<a href="">Korean</a>
+						<a href="">English</a>
+					</div>
+					<div class="arrow-box"></div>
+				</li>
+				<li><a href="">Admin</a></li>
+			</ul>
+			<!-- 로컬메뉴 -->
+			<div class="menu-container">
+				<a href="" class="logo">LOGO</a>
+				<ul class="local-menu">
+					<li>
+						<a href="" class="">회사소개</a>
+						<ul class="sub-menu">
+							<li>CEO 인사말</li>
+							<li>연혁</li>
+							<li>주요 납품실적</li>
+							<li>대리점 소개</li>
+						</ul>
+					</li>
+					<li>
+						<a href="" class="">Chamber 소개</a>
+						<ul class="sub-menu">
+							<li>항온항습</li>
+							<li>Walk-in</li>
+							<li>복합진동</li>
+							<li>열충격</li>
+						</ul>
+					</li>
+					<li>
+						<a href="" class="">기타제품 소개</a>
+						<ul class="sub-menu">
+							<li>열풍순환 건조기</li>
+							<li>기타 시험기</li>
+						</ul>
+					</li>
+					<li>
+						<a href="" class="">기술자료실</a>
+					</li>
+					<li>
+						<a href="" class="">고객센터</a>
+						<ul class="sub-menu">
+							<li>온라인 견적</li>
+							<li>고객문의</li>
+							<li>공지사항</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- mobile 메뉴 -->
+		<div class="content-wrap mo-menu mobile-only">
+			<div class="language">
+				<a href="" class="on">Korean</a>
+				<a href="">English</a>
+			</div>
+
+			<ul class="local-menu">
+				<li class="on">
+					<p class="menu-btn">회사소개</p>
+					<ul class="sub-menu">
+						<li>CEO 인사말</li>
+						<li>연혁</li>
+						<li>주요 납품실적</li>
+						<li>대리점 소개</li>
+					</ul>
+				</li>
+				<li>
+					<p class="menu-btn">Chamber 소개</p>
+					<ul class="sub-menu">
+						<li>항온항습</li>
+						<li>Walk-in</li>
+						<li>복합진동</li>
+						<li>열충격</li>
+					</ul>
+				</li>
+				<li>
+					<p class="menu-btn">기타제품 소개</p>
+					<ul class="sub-menu">
+						<li>열풍순환 건조기</li>
+						<li>기타 시험기</li>
+					</ul>
+				</li>
+				<li>
+					<a href="" class="menu-btn">기술자료실</a>
+				</li>
+				<li>
+					<p class="menu-btn">고객센터</p>
+					<ul class="sub-menu">
+						<li>온라인 견적</li>
+						<li>고객문의</li>
+						<li>공지사항</li>
+					</ul>
+				</li>
+				<li>
+					<a href="" class="menu-btn">Sitemap</a>
+				</li>
+			</ul>
+		</div>
+		<script>
+			// mobile menu slide
+			$('.local-menu>li>p').on('click', function(e){
+				$(this).parents('li').addClass("on");
+				$('.local-menu>li>p').not( $(this) ).parents('li').stop().removeClass("on");
+			});
+		</script>
+	</div>
+
+	<!-- 컨텐츠 시작 -->
+	<div class="container">
+
+		<!-- 비주얼부분 시작 -->
+		<section class="main-visual">
+			<div id='mainSwipe'>
+				<ul class='mainswipe-wrap'>
+					<li style="background-image:url('img/swipe_img1.jpg');">
+						<div class="animate-content">
+							<h1>첨단 산업용 디스플레이 세계 1위 삼건기연</h1>
+							<p>삼건기연은 세계를 무대로 1등 제품을 만드는 <br>자랑스러운 대한민국 기업입니다.</p>
+							<button class="default-btn"><p>기업정보 바로가기</p></button>
+						</div>
+					</li>
+					<li style="background-image:url('img/swipe_img2.jpg');">
+						<div class="animate-content">
+							<h1>삼건기연과 함께 더욱 유익하고 즐거워지는 학습의 시간</h1>
+							<p>초대형 전자칠판은 고화질 화면과 섬세한 터치감으로 스마트 러닝 교육환경을 선도합니다.</p>
+							<button class="default-btn"><p>자세히 보기</p></button>
+						</div>
+					</li>
+					<li style="background-image:url('img/swipe_img3.jpg');">
+						<div class="animate-content">
+							<h1>신비하고 소중한 탄생의 순간 삼건기연이 함께합니다.</h1>
+							<p>무결점의 선명한 화질을 바탕으로 차별화 된 의료용 디스플레이를 제공합니다.</p>
+							<button class="default-btn"><p>자세히 보기</p></button>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+			<div class="mainswipe-console">
+				<div class="mainswipe-btns">
+					<div id="mainswipe-btn0" class="mainswipe-btn on" onclick='mainSwipe.slide(0, 300);'></div> 
+					<div id="mainswipe-btn1" class="mainswipe-btn" onclick='mainSwipe.slide(1, 300);'></div>
+					<div id="mainswipe-btn2" class="mainswipe-btn" onclick='mainSwipe.slide(2, 300);'></div>
+					<div id="mainswipe-btn3" class="mainswipe-btn" onclick='mainSwipe.slide(3, 300);'></div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<script>
+		$(".mo-icon").on('click', function() {
+			$(this).toggleClass("on");
+			$('.mo-menu').toggleClass("on");
+			$('body').toggleClass("no-scroll");
+			//$("nav ul").toggleClass('hidden');
+		});
+	</script>
+
+
+
+	<!-- 헤더 슬라이드 컨트롤 -->
+	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+	<script src="js/index.js"></script>
+  </body>
+</html>
