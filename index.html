@@ -62,11 +62,6 @@
 	<!-- 헤더 시작 -->
 	<div id="header">
 		<div class="mo-logo mobile-only"><a>LOGO</a></div>
-		<div class="mobile-only mo-icon">
-			<div class="one"></div>
-			<div class="two"></div>
-			<div class="three"></div>
-		</div>
 		<!-- pc 헤더 -->
 		<div class="content-wrap pc-header pc-only">
 			<!-- 유틸메뉴 -->
@@ -126,63 +121,69 @@
 				</ul>
 			</div>
 		</div>
-		<!-- mobile 메뉴 -->
-		<div class="content-wrap mo-menu mobile-only">
-			<div class="language">
-				<a href="" class="on">Korean</a>
-				<a href="">English</a>
-			</div>
-
-			<ul class="local-menu">
-				<li class="on">
-					<p class="menu-btn">회사소개</p>
-					<ul class="sub-menu">
-						<li>CEO 인사말</li>
-						<li>연혁</li>
-						<li>주요 납품실적</li>
-						<li>대리점 소개</li>
-					</ul>
-				</li>
-				<li>
-					<p class="menu-btn">Chamber 소개</p>
-					<ul class="sub-menu">
-						<li>항온항습</li>
-						<li>Walk-in</li>
-						<li>복합진동</li>
-						<li>열충격</li>
-					</ul>
-				</li>
-				<li>
-					<p class="menu-btn">기타제품 소개</p>
-					<ul class="sub-menu">
-						<li>열풍순환 건조기</li>
-						<li>기타 시험기</li>
-					</ul>
-				</li>
-				<li>
-					<a href="" class="menu-btn">기술자료실</a>
-				</li>
-				<li>
-					<p class="menu-btn">고객센터</p>
-					<ul class="sub-menu">
-						<li>온라인 견적</li>
-						<li>고객문의</li>
-						<li>공지사항</li>
-					</ul>
-				</li>
-				<li>
-					<a href="" class="menu-btn">Sitemap</a>
-				</li>
-			</ul>
-		</div>
-		<script>
-			// mobile menu slide
-			$('.local-menu>li>p').on('click', function(e){
-				$(this).parents('li').addClass("on");
-				$('.local-menu>li>p').not( $(this) ).parents('li').stop().removeClass("on");
-			});
-		</script>
 	</div>
+	<div class="blackout"></div>
+	<div class="mobile-only mo-icon">
+		<div class="one"></div>
+		<div class="two"></div>
+		<div class="three"></div>
+	</div>
+	<!-- mobile 메뉴 -->
+	<div class="mo-menu-wrap mobile-only">
+		<div class="language">
+			<a href="" class="on">Korean</a>
+			<a href="">English</a>
+		</div>
+
+		<ul class="local-menu">
+			<li class="on">
+				<p class="menu-btn">회사소개</p>
+				<ul class="sub-menu">
+					<li>CEO 인사말</li>
+					<li>연혁</li>
+					<li>주요 납품실적</li>
+					<li>대리점 소개</li>
+				</ul>
+			</li>
+			<li>
+				<p class="menu-btn">Chamber 소개</p>
+				<ul class="sub-menu">
+					<li>항온항습</li>
+					<li>Walk-in</li>
+					<li>복합진동</li>
+					<li>열충격</li>
+				</ul>
+			</li>
+			<li>
+				<p class="menu-btn">기타제품 소개</p>
+				<ul class="sub-menu">
+					<li>열풍순환 건조기</li>
+					<li>기타 시험기</li>
+				</ul>
+			</li>
+			<li>
+				<a href="#" class="menu-btn">기술자료실</a>
+			</li>
+			<li>
+				<p class="menu-btn">고객센터</p>
+				<ul class="sub-menu">
+					<li>온라인 견적</li>
+					<li>고객문의</li>
+					<li>공지사항</li>
+				</ul>
+			</li>
+			<li>
+				<a href="#" class="menu-btn">Sitemap</a>
+			</li>
+		</ul>
+	</div>
+	<script>
+		// mobile menu slide
+		$('.local-menu>li>p').on('click', function(e){
+			$(this).parents('li').addClass("on");
+			$('.local-menu>li>p').not( $(this) ).parents('li').stop().removeClass("on");
+		});
+	</script>
 
 	<!-- 컨텐츠 시작 -->
 	<div class="container">
@@ -229,7 +230,8 @@
 	<script>
 		$(".mo-icon").on('click', function() {
 			$(this).toggleClass("on");
-			$('.mo-menu').toggleClass("on");
+			$('.mo-menu-wrap').toggleClass("on");
+			$('.blackout').toggleClass("on");
 			$('body').toggleClass("no-scroll");
 			//$("nav ul").toggleClass('hidden');
 		});
