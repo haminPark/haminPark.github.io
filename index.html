@@ -9,7 +9,7 @@
 	<!-- 모바일에서 중요 부분 -->
 	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'/> 
 	<!-- 아이폰 전화번호 연걸 -->
-	<meta name="format-detection" content="telephone=no">
+	<!-- <meta name="format-detection" content="telephone=no"> -->
     
     <link rel="stylesheet" href="css/style.css" />
 	<link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
@@ -61,7 +61,6 @@
   <body>
 	<!-- 헤더 시작 -->
 	<div id="header">
-		<div class="mo-logo mobile-only"><a>LOGO</a></div>
 		<!-- pc 헤더 -->
 		<div class="content-wrap pc-header pc-only">
 			<!-- 유틸메뉴 -->
@@ -122,7 +121,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="blackout"></div>
+	<div class="mo-logo mobile-only"><a>LOGO</a></div>
 	<div class="mobile-only mo-icon">
 		<div class="one"></div>
 		<div class="two"></div>
@@ -130,13 +129,8 @@
 	</div>
 	<!-- mobile 메뉴 -->
 	<div class="mo-menu-wrap mobile-only">
-		<div class="language">
-			<a href="" class="on">Korean</a>
-			<a href="">English</a>
-		</div>
-
 		<ul class="local-menu">
-			<li class="on">
+			<li>
 				<p class="menu-btn">회사소개</p>
 				<ul class="sub-menu">
 					<li>CEO 인사말</li>
@@ -179,12 +173,24 @@
 				<a href="#" class="menu-btn">Sitemap</a>
 			</li>
 		</ul>
+		<div class="contact">
+			<h3>SAMKUN Tech Development Co.ltd</h3>
+			<p>서울특별시 금천구 가산동 481-10 벽산디지털밸리 2차 412호</p>
+			<p><span>TEL .</span> 02.565.3330 | <span>FAX .</span> 02.565.1550</p>
+			<p><span>EMAIL .</span> h.park@wowzer.co.kr</p>
+		</div>
+		<div class="language">
+			<a href="" class="on">Korean</a>
+			<a href="">English</a>
+		</div>
 	</div>
 	<script>
 		// mobile menu slide
-		$('.local-menu>li>p').on('click', function(e){
-			$(this).parents('li').addClass("on");
-			$('.local-menu>li>p').not( $(this) ).parents('li').stop().removeClass("on");
+		$('.local-menu>li>p').on('click', function(){
+			$(this).parents('li').addClass('on')
+			$(this).parents('li').parents('ul').addClass('active');
+			$(this).parents('li').children('ul.sub-menu').addClass('on');
+			//$('.local-menu>li>p').not( $(this) ).parents('li').stop().removeClass('on');
 		});
 	</script>
 
@@ -234,7 +240,7 @@
 		$(".mo-icon").on('click', function() {
 			$(this).toggleClass("on");
 			$('.mo-menu-wrap').toggleClass("on");
-			$('.blackout').toggleClass("on");
+			//$('.blackout').toggleClass("on");
 			$('body').toggleClass("no-scroll");
 			//$("nav ul").toggleClass('hidden');
 		});
